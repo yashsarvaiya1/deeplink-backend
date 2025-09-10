@@ -1,0 +1,36 @@
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# C extensions
+*.so
+
+# Virtual environment
+.venv/
+venv/
+ENV/
+
+# VS Code settings
+.vscode/
+
+# macOS
+.DS_Store
+
+# Environment variables
+.env
+
+# Docker
+docker-compose.override.yml
+
+# Pytest
+.cache/
+.pytest_cache/
+
+# Alembic
+alembic/versions/*.py
+
+# Logs and reports
+*.log
+coverage.xml
+htmlcov/
