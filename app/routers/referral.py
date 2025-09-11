@@ -116,6 +116,9 @@ async def handle_redirect(token: str, request: Request):
                 // Method 3: Market intent (preferred for installed apps)
                 var marketIntent = "market://details?id={settings.ANDROID_PACKAGE_NAME}&referrer={referrer_val}";
                 
+                // Method 4: Direct package launch intent
+                var packageIntent = "intent:#Intent;package={settings.ANDROID_PACKAGE_NAME};scheme={app_scheme};S.ref_token={token};end";
+                
                 // Try custom scheme first
                 var startTime = Date.now();
                 var iframe = document.createElement('iframe');
@@ -126,8 +129,13 @@ async def handle_redirect(token: str, request: Request):
                 // Check if app opened (if user stays on page, app didn't open)
                 var checkAppOpened = function() {{
                     if (Date.now() - startTime < 2500) {{
-                        // Try intent URL as backup
-                        window.location.href = intentUrl;
+                        // Try package intent
+                        try {{
+                            window.location.href = packageIntent;
+                        }} catch(e) {{
+                            // Try intent URL as backup
+                            window.location.href = intentUrl;
+                        }}
                     }}
                 }};
                 
