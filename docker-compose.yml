@@ -1,0 +1,26 @@
+services:
+  redis:
+    image: redis:7
+    container_name: deeplink-redis
+    restart: unless-stopped
+    volumes:
+      - redis_data:/data
+    cpus: 0.5
+    mem_limit: 512m
+
+  backend:
+    image: yashsarvaiya2002/deeplink:v1.0.2
+    container_name: deeplink-backend
+    restart: unless-stopped
+    env_file:
+      - .env
+    ports:
+      - "9090:8000"
+    depends_on:
+      - redis
+    cpus: 1.0
+    mem_limit: 1024m
+
+volumes:
+  redis_data:
+    driver: local

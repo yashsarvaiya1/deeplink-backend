@@ -1,0 +1,9 @@
+BASE_URL=http://136.115.209.135:9090
+REDIS_URL=redis://redis:6379/0
+LINK_TTL=2592000
+ANDROID_PACKAGE_NAME=in.npswala.nps
+IOS_APP_ID=id123456789
+FALLBACK_URL=https://it.rdtechenterprises.com/
+APP_NAME=Pension Plus
+APP_SCHEME=pensionplus
+UNIVERSAL_LINK_DOMAIN=npswala.in
